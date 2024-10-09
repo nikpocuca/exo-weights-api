@@ -1,0 +1,33 @@
+# Byte-compiled files
+__pycache__/
+*.pyc
+
+# Docker-related files
+dockers/*.Dockerfile
+dockers/docker-compose.yml
+dockers/redis.conf
+
+# Redis data files
+redis-data/
+*.rdb
+
+# Environment-related files
+.env
+*.env
+
+# Ignore dependency files
+dockers/requirements.txt
+
+# MacOS specific
+.DS_Store
+
+# Logs
+*.log
+
+# Ignore compiled shared object files
+*.so
+
+# Ignore system-generated files
+*.swp
+*.swo
+
