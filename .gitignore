@@ -11,8 +11,6 @@ redis-data/
 .env
 *.env
 
-# Ignore dependency files
-dockers/requirements.txt
 
 # MacOS specific
 .DS_Store
