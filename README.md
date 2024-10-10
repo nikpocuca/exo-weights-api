@@ -159,7 +159,7 @@ This is by far the most important endpoint in the api, it is an api that actuall
 }
 ```
 
-The response will look something like this: 
+The response will look something like this:
 
 
 ```json
