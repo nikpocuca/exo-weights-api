@@ -37,6 +37,10 @@ jobs:
         run: |
           docker compose -f ./dockers/docker-compose.yml build api
 
+      - name: Ensure redis-net network exists
+        run: |
+          docker network create redis-net || true
+
       - name: Start API service
         run: |
           docker compose -f ./dockers/docker-compose.yml up -d api

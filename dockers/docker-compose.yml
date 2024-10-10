@@ -76,3 +76,4 @@ volumes:
 networks:
   redis-net:
     external: true
+    driver: bridge
