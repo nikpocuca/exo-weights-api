@@ -44,7 +44,6 @@ def test_weights_update_flow(setup_initial_body):
     # Begin experiment iterations
     body = setup_initial_body
     for i in range(100):
-        time.sleep(1)  # Simulate wait time
 
         if i == 0:
             # Initial update
