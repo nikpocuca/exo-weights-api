@@ -32,4 +32,4 @@ api_build:
 
 .PHONY:
 api:
-	docker compose -f "./dockers/docker-compose.yml" run -p 8000:8000 api
+	docker compose -f "./dockers/docker-compose.yml" run -p 8001:8001 api
