@@ -11,9 +11,9 @@ number_of_nodes = 2
 weights = [1.0 / number_of_nodes] * number_of_nodes
 weights[-1] = 1.0 - sum(weights[:-1])
 optimal_weights = [0.90, 0.10]
-gen_endpoint = "http://0.0.0.0:8000/weights_gen/"
-update_endpoint = "http://0.0.0.0:8000/weights_update/"
-delete_endpoint = "http://0.0.0.0:8000/weights_update_delete/"
+gen_endpoint = "http://0.0.0.0:8001/weights_gen/"
+update_endpoint = "http://0.0.0.0:8001/weights_update/"
+delete_endpoint = "http://0.0.0.0:8001/weights_update_delete/"
 
 @pytest.fixture
 def setup_initial_body():

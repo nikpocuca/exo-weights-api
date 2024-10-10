@@ -69,4 +69,4 @@ ENV APP_DIR="/home/app_user/app/"
 WORKDIR ${APP_DIR}
 
 
-EXPOSE 8004
+EXPOSE 8001
