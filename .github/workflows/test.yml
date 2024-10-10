@@ -45,6 +45,14 @@ jobs:
         run: |
           docker compose -f ./dockers/docker-compose.yml up -d api
           
+
+      - name: Wait for API service to be ready
+        run: |
+          until curl -s http://localhost:<API_PORT>/health; do
+            echo "Waiting for API service..."
+            sleep 5
+          done
+          
       - name: Run Tests
         run: |
           pytest tests/test_generation.py
