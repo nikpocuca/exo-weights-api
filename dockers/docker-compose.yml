@@ -1,0 +1,78 @@
+services:
+  ubuntu_shell_2204:
+    image: ubuntu_shell_2204
+    container_name: ubuntu_shell_2204
+    build:
+      context: .
+      dockerfile: ubuntu_jammy.Dockerfile
+    volumes:
+      - ../:/home/app_user/app
+      - ./requirements.txt:/home/app_user/app/requirements.txt
+    networks:
+      - redis-net
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+  
+  api: 
+    image: ubuntu_shell_2204
+    container_name: api_shell
+    build:
+      context: .
+      dockerfile: ubuntu_jammy.Dockerfile
+    volumes:
+      - ../:/home/app_user/app
+      - ./requirements.txt:/home/app_user/app/requirements.txt
+    depends_on:
+      - red
+    ports:
+      - "8000:8000"
+    command: 
+      - uvicorn
+      - main:app
+      - --reload
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    networks:
+      - redis-net
+
+  jupy:
+    image: jupy
+    container_name: jupy
+    build:
+      context: .
+      dockerfile: jupy.Dockerfile
+    volumes:
+      - ../:/home/app_user/app
+    depends_on:
+      - red
+    ports:
+      - "8889:8889"
+    command: ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8889", "--allow-root"]
+    networks:
+      - redis-net
+
+  red:
+    image: red
+    container_name: red
+    build:
+      context: .
+      dockerfile: red.Dockerfile
+    volumes:
+      - ../redis-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    expose:
+      - "6379"
+    networks:
+      - redis-net
+
+volumes:
+  redis-data:
+    driver: local
+
+networks:
+  redis-net:
+    external: true

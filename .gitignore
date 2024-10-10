@@ -2,10 +2,6 @@
 __pycache__/
 *.pyc
 
-# Docker-related files
-dockers/*.Dockerfile
-dockers/docker-compose.yml
-dockers/redis.conf
 
 # Redis data files
 redis-data/
