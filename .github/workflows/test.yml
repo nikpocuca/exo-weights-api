@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   test:
@@ -32,6 +29,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r dockers/requirements.txt
 
+      - name: Build API service
+        run: |
+          docker compose -f ./dockers/docker-compose.yml build api
+
+      - name: Start API service
+        run: |
+          docker compose -f ./dockers/docker-compose.yml up -d api
+          
       - name: Run Tests
         run: |
-          pytest -v -s tests/test_generation.py
+          pytest tests/test_generation.py
